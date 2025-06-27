@@ -11,7 +11,7 @@ export const crearPelicula= async (req,res)=>{
      }
    }
     try {{title,director,duration,genre,description}
-         
+        
         if(title=== undefined)return res.status(400).json({message:"title no puede estar vacio"});
         if(duration === undefined)return res.status(400).json({message:"duracion no puede estar vacio"});
         if(director === undefined)return res.status(400).json({message:"director no puede estar vacio"});
@@ -25,7 +25,7 @@ export const crearPelicula= async (req,res)=>{
 
         if(description !== undefined){
             if(typeof description !== "string"){
-                return res.status(400).json({errorMessage: "'description' invalida"});
+                return res.status(400).json({errorMessage: "description invalida"});
             }
         }
 
