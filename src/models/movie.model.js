@@ -1,7 +1,7 @@
 import { sequelize } from "../config/database.js";
 import { DataTypes } from "sequelize";
 
-const Character = sequelize.define(
+const ESModules = sequelize.define(
     {
         id:{
             type: DataTypes.INTEGER,
@@ -31,5 +31,5 @@ const Character = sequelize.define(
             allowNull: false,
         }
         }) 
-        export default Character
+        export default ESModules
         

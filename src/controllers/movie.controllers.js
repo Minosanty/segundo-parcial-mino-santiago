@@ -1,4 +1,4 @@
-import Character from "../models/movie.model.js";
+import ESModules from "../models/movie.model.js";
 export const crearPelicula= async (req,res)=>{
    const{title,director,duration,genre,description}=req.body
    if(req.body){
@@ -15,7 +15,7 @@ export const crearPelicula= async (req,res)=>{
         if(director === undefined)return res.status(400).json({message:"director no puede estar vacio"});
         if(genre === undefined)return res.status(400).json({message:"Genre no puede estar vacio"});
 
-        const peliculaUnico = await Character.findOne({where: {title}});
+        const peliculaUnico = await ESModules.findOne({where: {title}});
         if (peliculaUnico !== null) return res.status(400).json({message: "nombre exitente"});
 
         const duracion = Math.floor(duration);
@@ -27,7 +27,7 @@ export const crearPelicula= async (req,res)=>{
             }
         }
 
-        const character= await Character.create({title,director,duration,genre,description});
+        const EsModules= await ESModules.create({title,director,duration,genre,description});
         res.status(201).json({message: "se ha almasenado la pelicula", character});
         } 
         catch (error) {
@@ -48,11 +48,11 @@ export const actulizarPelicula = async(req, res) =>{
 
 try{
     if(title){
-        const peliculaUnico = await Character.findOne({where: {title}});
+        const peliculaUnico = await ESModules.findOne({where: {title}});
         if(peliculaUnico !==null) return res.status(400).json({message: "esta pelicula ya exixten"});}
  
 
-const[updated] = await Character.update({title,director,duration,genre,description},{
+const[updated] = await ESModules.update({title,director,duration,genre,description},{
     where: {id: req.params.id}
 });
 if(updated === 0) return res.status(400).json({message: "la pelicula no existe"});
@@ -70,7 +70,7 @@ catch (error) {
 
 export const obtenerTodasLasPeliculas = async(req,res)=>{
     try{
-        const Pelicula = await Character.findAll();
+        const Pelicula = await ESModules.findAll();
         if(Pelicula.length=== 0) return res.status(404).json({message: "no se encontro ninguna película "})
 
         return res.status(200).json(Pelicula);
@@ -84,7 +84,7 @@ export const obtenerTodasLasPeliculas = async(req,res)=>{
 
 export const obtenerPorId = async(req,res)=>{
 try{
-const personaje = await Character.findByPk(req.params.id);
+const personaje = await ESModules.findByPk(req.params.id);
 if(personaje) return res.status(200).json(personaje);
 
 return req.status(404).json({message:"no existe "});
@@ -95,7 +95,7 @@ return req.status(404).json({message:"no existe "});
 
 export const eliminacion= async(req,res)=>{
     try{
-const eliminados = await Character.destroy({where:{id:req.params.id}});
+const eliminados = await ESModules.destroy({where:{id:req.params.id}});
 console.log(eliminados)
 
 if (eliminados===0)return res.status(404).json({message:"no encontrado"})

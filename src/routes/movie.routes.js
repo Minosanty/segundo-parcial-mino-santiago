@@ -1,11 +1,11 @@
 import express from "express";
-import { actulizarPelicula, crearPelicula, eliminacion, obtenerPorId, obtenerTodasLasPeliculas } from "../controllers/character.controllers.js";
+import { actulizarPelicula, crearPelicula, eliminacion, obtenerPorId, obtenerTodasLasPeliculas } from "../controllers/movie.controllers.js";
 const router = express.Router();
 
-router.get("/characters", obtenerTodasLasPeliculas);
-router.get("/characters/:id", obtenerPorId);
-router.post("/characters", crearPelicula);
-router.put("/characters/:id", actulizarPelicula);
-router.delete("/characters/:id", eliminacion);
+router.get("/ESModules", obtenerTodasLasPeliculas);
+router.get("/ESModules/:id", obtenerPorId);
+router.post("/ESModules", crearPelicula);
+router.put("/ESModules/:id", actulizarPelicula);
+router.delete("/ESModules/:id", eliminacion);
 
 export default router;
