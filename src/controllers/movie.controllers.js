@@ -1,5 +1,3 @@
-//controlers
-
 import Character from "../models/movie.model.js";
 export const crearPelicula= async (req,res)=>{
    const{title,director,duration,genre,description}=req.body
