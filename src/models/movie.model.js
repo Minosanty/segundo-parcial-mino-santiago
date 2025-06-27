@@ -1,6 +1,6 @@
 import { sequelize } from "../config/database.js";
 import { DataTypes } from "sequelize";
-title,director,duration,genre,description
+
 const Character = sequelize.define(
     {
         id:{
